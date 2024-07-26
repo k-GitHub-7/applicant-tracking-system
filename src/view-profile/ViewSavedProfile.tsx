@@ -2,6 +2,7 @@ import { Badge, Button, Col, Row, Stack } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useViewProfileById } from './ViewProfileById'
 import ReactMarkdown from 'react-markdown'
+import Rating from '../components/rating/Rating'
 
 type TNewProfile = {
   onDelete: (id: string) => void
@@ -17,9 +18,11 @@ export const ViewSavedProfile = ({ onDelete }: TNewProfile) => {
         <Col>
           <h1>Candidate: {title}</h1>
           <b>University: </b>
-          <span>{university?.label ?? 'None'}</span><br/>
+          <span>{university?.label ?? 'None'}</span>
+          <br />
           <b>Location: </b>
-          <span>{region?.label ?? 'None'}</span><br/>
+          <span>{region?.label ?? 'None'}</span>
+          <br />
           <b>Tech Stack:</b>
           {tags.length > 0 ? (
             <Stack gap={1} direction="horizontal" className="flex-wrap">
@@ -53,6 +56,8 @@ export const ViewSavedProfile = ({ onDelete }: TNewProfile) => {
           </Stack>
         </Col>
       </Row>
+      
+      <Rating value={3} steps={1} />
       <>
         <b>Description:</b> <ReactMarkdown>{markdown}</ReactMarkdown>
       </>
